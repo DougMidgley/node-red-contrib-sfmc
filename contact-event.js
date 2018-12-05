@@ -4,17 +4,16 @@ module.exports = function(RED) {
     function ContactEvent(config) {
         RED.nodes.createNode(this, config);
         let sfmcConfig = RED.nodes.getNode(config.sfmcConfig);
-        let restClient = new SFMCRestClient({
-            auth: {
-                // options you want passed when Fuel Auth is initialized
-                clientId: sfmcConfig.credentials.clientId,
-                clientSecret: sfmcConfig.credentials.clientSecret
-            },
-            restEndpoint: `https://${sfmcConfig.credentials.tenant}.rest.marketingcloudapis.com`
-        });
         let node = this;
         this.on('input', function(msg) {
-
+            let restClient = new SFMCRestClient({
+                auth: {
+                // options you want passed when Fuel Auth is initialized
+                    clientId: sfmcConfig.credentials.clientId,
+                    clientSecret: sfmcConfig.credentials.clientSecret
+                },
+                restEndpoint: `https://${sfmcConfig.credentials.tenant}.rest.marketingcloudapis.com`
+            });
 
             const options = {
                 method: 'POST',
