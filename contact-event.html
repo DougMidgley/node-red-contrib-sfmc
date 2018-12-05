@@ -1,0 +1,42 @@
+<script type="text/javascript">
+  RED.nodes.registerType('contact-event',{
+    category: 'sfmc',
+    color: '#E98300',
+    defaults: {
+      name: {value: ""},
+      sfmcConfig: {value: "", type:"sfmc", required: true},
+      payloadKey : {value: ""}
+    },
+    inputs:1,
+    outputs:1,
+    icon: "envelope.png",
+    label: function() {
+      return this.name || "contact-event";
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="contact-event">
+  <div class="form-row">
+    <label for="node-input-sfmcConfig"><i class="fa fa-cog"></i> Application</label>
+    <input type="text" id="node-input-sfmcConfig" >
+  </div>
+  <div class="form-row">
+    <label for="node-input-payloadKey"><i class="fa fa-user"></i>Event Payload Key on Msg</label>
+    <input type="text" id="node-input-payloadKey" placeholder="msg.eventPayload">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="contact-event">
+  <p>Send Event to Marketing Cloud Journey</p>
+  <p>
+
+  </p>
+  <ul>
+    <li><code>payloadKey</code> - Event Payload Key on Msg</li>
+  </ul>
+  <p>
+    Result will be an Async confirmation message (200)
+  </p>
+</script>
+

@@ -1,0 +1,35 @@
+<script type="text/javascript">
+  RED.nodes.registerType('sfmc',{
+    category: 'config',
+    defaults: {
+      name: {value: ""}
+    },
+    credentials: {
+      clientId: {type: "text", required: true},
+      clientSecret: {type: "password", required: true},
+      tenant: {type: "text"}
+    },
+    label: function() {
+      return this.name || "sfmc";
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="sfmc">
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-config-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-clientId"><i class="fa fa-key"></i> Client ID</label>
+    <input type="text" id="node-config-input-clientId" placeholder="Client ID">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-clientSecret"><i class="fa fa-key"></i> Client Secret</label>
+    <input type="password" id="node-config-input-clientSecret" placeholder="Client Secret">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-tenant"><i class="fa fa-wrench" placeholder="tenant"></i> Tenant</label>
+    <input type="text" id="node-config-input-tenant" placeholder="tenant">
+  </div>
+</script>

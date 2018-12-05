@@ -1,0 +1,60 @@
+{
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "google"
+    ],
+    "rules": {
+      "comma-dangle": "off",
+      "eol-last": [
+        "warn",
+        "never"
+      ],
+      "guard-for-in": "off",
+      "indent": [
+        "warn",
+        4,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "linebreak-style": "off",
+      "max-len": [
+        "error",
+        {
+          "code": 120,
+          "comments": 80,
+          "tabWidth": 4,
+          "ignoreUrls": true,
+          "ignoreTrailingComments": true,
+          "ignoreStrings": true
+        }
+      ],
+      "no-case-declarations": "off",
+      "no-extra-boolean-cast": "off",
+      "no-console":"warn",
+      "no-tabs": "warn",
+      "no-unused-vars":"error",
+      "padded-blocks": "off",
+      "prefer-rest-params": "off",
+      "prefer-spread": "off",
+      "valid-jsdoc": "off",
+      "require-jsdoc" :"off"
+    },
+    "parserOptions": {
+      "ecmaVersion": 9,
+      "sourceType": "module"
+    },
+    "plugins": ["eslint-plugin-standard"],
+
+    "settings": {
+      "propWrapperFunctions": [ "forbidExtraProps" ] 
+    },
+    "globals": {
+      "msg": false
+    }
+  }
