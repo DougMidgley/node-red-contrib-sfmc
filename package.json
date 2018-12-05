@@ -30,7 +30,8 @@
   ],
   "node-red": {
     "nodes": {
-      "contact-event": "contact-event.js"
+      "contact-event": "contact-event.js",
+      "sfmc": "sfmc.js"
     }
   },
   "author": {
