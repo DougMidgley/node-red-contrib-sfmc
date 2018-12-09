@@ -1,0 +1,66 @@
+<script type="text/javascript">
+  RED.nodes.registerType("getAttributes", {
+    category: "Marketing Cloud",
+    color: "#E98300",
+    defaults: {
+      name: { value: "" },
+      sfmcConfig: { value: "", type: "sfmc", required: true },
+      attributes: { value: "str", required: true },
+      attributesType: { value: "msg" },
+      filter: { value: "filter", required: true },
+      filterType: { value: "msg" }
+    },
+    inputs: 1,
+    outputs: 3,
+    icon: "envelope.png",
+    outputLabels: ["msg","values", "error"],
+    label: function() {
+      return this.name || "Get Attribute(s)";
+    },
+    oneditprepare: function() {
+      $("#node-input-attributes").typedInput({
+        default: "str",
+        types: ["msg","str", "json", "global"],
+        typeField: $("#node-input-attributesType")
+      });
+      $("#node-input-filter").typedInput({
+        default: "msg",
+        types: ["msg","str", "json", "global"],
+        typeField: $("#node-input-filterType")
+      });
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="getAttributes">
+    <div class="form-row">
+      <label for="node-input-sfmcConfig"><i class="fa fa-cog"></i> Application</label>
+      <input type="text" id="node-input-sfmcConfig" >
+    </div>
+    <div class="form-row ">
+      <label for="node-input-attributes"><i class="fa fa-user"></i>Attribute(s) to return</label>
+      <input type="text" id="node-input-attributes" placeholder="msg.attributes">
+      <input type="hidden" id="node-input-attributesType">
+  </div>
+  <div class="form-row">
+      <label for="node-input-filter"><i class="fa fa-user"></i>Filter</label>
+      <input type="text" id="node-input-filter" placeholder="filter">
+      <input type="hidden" id="node-input-filterType">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="getAttributes">
+  <p>Get one or more attributes from Contact Model</p>
+  <p>
+
+  </p>
+  <ul>
+    <li><code>attributes</code> - String or Array of Objects of Attribute(s) to be returned</li>
+  </ul>
+  <ul>
+    <li><code>filter</code> - Filter used to limit results  - https://developer.salesforce.com/docs/atlas.en-us.noversion.mc-apis.meta/mc-apis/fetchAttributes.htm</li>
+  </ul>
+  <p>
+    Result will be a list of attributes fulfilling this criteria
+  </p>
+</script>

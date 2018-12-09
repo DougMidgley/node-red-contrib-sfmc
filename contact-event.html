@@ -5,13 +5,17 @@
     defaults: {
       name: {value: ""},
       sfmcConfig: {value: "", type:"sfmc", required: true},
-      payloadKey : {value: ""}
+      eventPayload : { value: "payload", required: true },
+      eventPayloadType : {value: "msg"},
     },
     inputs:1,
     outputs:1,
     icon: "envelope.png",
     label: function() {
       return this.name || "contact-event";
+    },
+    oneditprepare: function() {
+      $("#node-input-eventPayload").typedInput({   default: 'msg', types: ['msg','json','global'],  typeField: $("#node-input-eventPayloadType")  });
     }
   });
 </script>
@@ -22,8 +26,8 @@
     <input type="text" id="node-input-sfmcConfig" >
   </div>
   <div class="form-row">
-    <label for="node-input-payloadKey"><i class="fa fa-user"></i>Event Payload Key on Msg</label>
-    <input type="text" id="node-input-payloadKey" placeholder="msg.eventPayload">
+    <label for="node-input-eventPayload"><i class="fa fa-user"></i>Event Payload on Msg</label>
+    <input type="text" id="node-input-eventPayload" placeholder="msg.eventPayload">
   </div>
 </script>
 
@@ -33,7 +37,7 @@
 
   </p>
   <ul>
-    <li><code>payloadKey</code> - Event Payload Key on Msg</li>
+    <li><code>eventPayload</code> - Payload</li>
   </ul>
   <p>
     Result will be an Async confirmation message (200)

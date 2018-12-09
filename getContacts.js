@@ -1,7 +1,11 @@
 module.exports = function(RED) {
+
+    function initGetContact(conditionSet) {
+        this.conditionSet = conditionSet;
+    }
     let SFMCRestClient = require('fuel-rest');
 
-    function ContactEvent(config) {
+    function getContacts(config) {
         RED.nodes.createNode(this, config);
         let sfmcConfig = RED.nodes.getNode(config.sfmcConfig);
         let node = this;
@@ -18,24 +22,23 @@ module.exports = function(RED) {
         });
         this.on('input', function(msg) {
             try {
+                const payload = new initGetContact(msg[config.filter]);
                 const options = {
                     method: 'POST',
-                    uri: restEndpoint + '/interaction/v1/events',
-                    body: msg[config.eventPayload],
+                    uri: restEndpoint + '/contacts/v1/contacts/search',
+                    body: payload,
                     json: true
                 };
 
                 restClient
                     .post(options)
                     .then((response) => {
-                        node.send({
-                            payload: response.body
-                        });
+                        msg.result = response.body;
+                        node.send([msg, response.body.items, undefined]);
                     })
                     .catch((err) => {
-                        node.error(err, {
-                            payload: JSON.parse(JSON.stringify(err))
-                        });
+                        msg.result = err;
+                        node.send([msg, undefined, err]);
                     });
             } catch (ex) {
                 node.error(ex, {
@@ -44,5 +47,5 @@ module.exports = function(RED) {
             }
         });
     }
-    RED.nodes.registerType('contact-event', ContactEvent);
+    RED.nodes.registerType('getContacts', getContacts);
 };

@@ -1,0 +1,51 @@
+<script type="text/javascript">
+  RED.nodes.registerType("getContacts", {
+    category: "Marketing Cloud",
+    color: "#E98300",
+    defaults: {
+      name: { value: "" },
+      sfmcConfig: { value: "", type: "sfmc", required: true },
+      filter: { value: "filter", required: true },
+      filterType: { value: "msg" }
+    },
+    inputs: 1,
+    outputs: 3,
+    icon: "envelope.png",
+    outputLabels: ["msg", "values", "error"],
+    label: function() {
+      return this.name || "Get Contact(s)";
+    },
+    oneditprepare: function() {
+      $("#node-input-filter").typedInput({
+        default: "msg",
+        types: ["msg", "str", "json", "global"],
+        typeField: $("#node-input-filterType")
+      });
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="getContacts">
+    <div class="form-row">
+      <label for="node-input-sfmcConfig"><i class="fa fa-cog"></i> Application</label>
+      <input type="text" id="node-input-sfmcConfig" >
+    </div>
+    <div class="form-row">
+      <label for="node-input-filter"><i class="fa fa-user"></i>Filter</label>
+      <input type="text" id="node-input-filter" placeholder="filter">
+      <input type="hidden" id="node-input-filterType">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="getContacts">
+  <p>Retreive Contacts from Contact Model which meet the filter criteria</p>
+  <p>
+
+  </p>
+  <ul>
+    <li><code>filter</code> - Filter used to limit results  - https://developer.salesforce.com/docs/atlas.en-us.noversion.mc-apis.meta/mc-apis/fetchAttributes.htm</li>
+  </ul>
+  <p>
+    Result will be a list of Contact (if any) found based on the filter criteria
+  </p>
+</script>

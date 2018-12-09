@@ -31,6 +31,8 @@
   "node-red": {
     "nodes": {
       "contact-event": "contact-event.js",
+      "getAttributes": "getAttributes.js",
+      "getContacts": "getContacts.js",
       "sfmc": "sfmc.js"
     }
   },
