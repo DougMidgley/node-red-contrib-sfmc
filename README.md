@@ -1,6 +1,12 @@
 # node-red-contrib-sfmc
 
-A set of [Node-RED](http://www.nodered.org) nodes to interact with [sfmc(Salesforce Marketing Cloud)](http://www.salesforce.com/jp/marketing-cloud/overview/). 
+A set of [Node-RED](http://www.nodered.org) nodes to interact with [Salesforce Marketing Cloud (SFMC)](https://www.salesforce.com/products/marketing-cloud/overview/). 
+
+Thanks to Makoto Tajitsu for their work on https://github.com/tzmfreedom/node-red-contrib-exacttarget which game me the basic template and inspiration
+
+Focus is on leveraging SFMC REST APIs, particularly focused on Chatbot and Registration. MobileStudio and Email Studio nodes to come
+
+Contributors welcome, details on APIs are at https://developer.salesforce.com/docs/atlas.en-us.noversion.mc-apis.meta/mc-apis/index-api.htm
 
 ## Install
 
