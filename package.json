@@ -39,5 +39,8 @@
   "author": {
     "name": "Douglas Midgley",
     "email": "douglasmidgley@gmail.com"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   }
 }
