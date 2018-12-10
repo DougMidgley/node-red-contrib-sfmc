@@ -1,10 +1,10 @@
 {
   "name": "node-red-contrib-sfmc",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "SFMC (Salesforce Marketing Cloud) Node",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tzmfreedom/node-red-contrib-sfmc"
+    "url": "https://github.com/DougMidgley/node-red-contrib-sfmc"
   },
   "dependencies": {
     "fuel-rest": "^3.1.0"
